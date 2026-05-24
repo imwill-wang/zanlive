@@ -1,0 +1,11 @@
+{
+	"name": "zanlive-client-uniapp",
+	"version": "1.0.3",
+	"private": true,
+	"dependencies": {
+		"flv.js": "^1.6.2",
+		"howler": "^2.2.3",
+		"svgaplayer-weapp": "^1.0.0",
+		"svgaplayerweb": "^2.3.2"
+	}
+}

@@ -1,0 +1,267 @@
+{
+	"pages": [
+		{
+			"path": "pages/launch/index",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/auth/login",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/auth/register",
+			"style": {
+				"navigationBarTitleText": "Register",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/live/index",
+			"style": {
+				"navigationStyle": "custom",
+				"disableScroll": true,
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/live/room",
+			"style": {
+				"navigationStyle": "custom",
+				"disableScroll": true,
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/live/anchor-detail",
+			"style": {
+				"navigationBarTitleText": "Anchor Detail",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/friend/list",
+			"style": {
+				"navigationBarTitleText": "Followed Hosts",
+				"enablePullDownRefresh": true,
+				"disableScroll": true,
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/friend/apply",
+			"style": {
+				"navigationBarTitleText": "Requests",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/friend/search",
+			"style": {
+				"navigationBarTitleText": "Search Friends",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/message/list",
+			"style": {
+				"navigationBarTitleText": "Messages",
+				"disableScroll": true,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"type": "none",
+								"float": "right",
+								"width": "40px",
+								"text": "+",
+								"fontSize": "30px",
+								"fontWeight": "700",
+								"color": "#000000"
+							}
+						]
+					},
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/chat/session",
+			"style": {
+				"navigationBarTitleText": "Chat",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/chat/customer-service",
+			"style": {
+				"navigationBarTitleText": "Support",
+				"disableScroll": true,
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "Me",
+				"disableScroll": true,
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/user/profile",
+			"style": {
+				"navigationBarTitleText": "Profile",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/user/language",
+			"style": {
+				"navigationBarTitleText": "Language",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/wallet/index",
+			"style": {
+				"navigationBarTitleText": "Wallet",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/wallet/recharge",
+			"style": {
+				"navigationBarTitleText": "Recharge",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/wallet/gift-record",
+			"style": {
+				"navigationBarTitleText": "Gift Records",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/wallet/reward-record",
+			"style": {
+				"navigationBarTitleText": "Reward Records",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#7D7D7D",
+		"selectedColor": "#1C1613",
+		"backgroundColor": "#FFF9F2",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/live/index",
+				"text": "Home",
+				"iconPath": "static/icon/tab/home.png",
+				"selectedIconPath": "static/icon/tab/home-l.png"
+			},
+			{
+				"pagePath": "pages/friend/list",
+				"text": "Following",
+				"iconPath": "static/icon/tab/like.png",
+				"selectedIconPath": "static/icon/tab/like-l.png"
+			},
+			{
+				"pagePath": "pages/message/list",
+				"text": "Messages",
+				"iconPath": "static/icon/tab/news.png",
+				"selectedIconPath": "static/icon/tab/news-l.png"
+			},
+			{
+				"pagePath": "pages/user/index",
+				"text": "Me",
+				"iconPath": "static/icon/tab/my.png",
+				"selectedIconPath": "static/icon/tab/my-l.png"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "ZanLive",
+		"navigationBarBackgroundColor": "#FFF9F2",
+		"backgroundColor": "#F4E7D9",
+		"app-plus": {
+			"bounce": "none",
+			"scrollIndicator": "none"
+		}
+	},
+	"uniIdRouter": {}
+}
