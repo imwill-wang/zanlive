@@ -41,6 +41,9 @@
 				:follow-loading="followLoading"
 				:top-audience-avatars="topAudienceAvatars"
 				:room-online-count="roomOnlineCount"
+				:room-heat="roomHeat"
+				:online-text="onlineText"
+				:heat-text="heatText"
 				@toggle-follow="toggleFollow"
 				@tap-ranking="openRankingPanel"
 				@open-anchor-detail="openAnchorDetail"
@@ -251,6 +254,7 @@
 	const localeVersion = ref(0)
 	const liveText = ref('')
 	const onlineText = ref('')
+	const heatText = ref('')
 	const followText = ref('')
 	const followingText = ref('')
 	const currentFollowButtonText = ref('')
@@ -288,6 +292,7 @@
 	const anchorAvatar = ref('/static/logo.png')
 	const roomTitle = ref('Live Room')
 	const roomOnlineCount = ref(0)
+	const roomHeat = ref(0)
 	const roomStreamText = ref('mock://stream')
 	const balanceText = ref('0 Coins')
 	const currencyName = ref('Coins')
@@ -736,6 +741,7 @@
 		localeVersion.value = i18nStore.version
 		liveText.value = t('common.live')
 		onlineText.value = t('common.online')
+		heatText.value = t('common.heat')
 		followText.value = t('common.follow')
 		followingText.value = localizedText('已关注', 'Following')
 		currentFollowButtonText.value = isFollowing.value ? followingText.value : followText.value
@@ -784,6 +790,7 @@
 			avatars.push(anchorAvatar.value.length > 0 ? anchorAvatar.value : '/static/logo.png')
 		}
 		topAudienceAvatars.value = avatars
+		console.log('[live-rank] top audience avatars', roomId.value, topAudienceAvatars.value)
 	}
 
 	async function loadFollowState(): Promise<void> {
@@ -810,7 +817,7 @@
 	async function loadRankingData(): Promise<void> {
 		rankingLoading.value = true
 		try {
-			rankingList.value = await getLiveRoomRanking(10)
+			rankingList.value = await getLiveRoomRanking(roomId.value, 10)
 		} finally {
 			rankingLoading.value = false
 			syncTopAudienceAvatars()
@@ -1152,6 +1159,7 @@
 			anchorName.value = room.anchorName
 			anchorAvatar.value = room.anchorAvatar.length > 0 ? room.anchorAvatar : '/static/logo.png'
 			roomOnlineCount.value = room.onlineCount
+			roomHeat.value = room.heat
 			roomStreamText.value = resolveRoomStreamUrl(room.streamUrl)
 			allowMessage.value = room.allowMessage != false
 			allowGift.value = room.allowGift
@@ -1364,7 +1372,7 @@
 				+ '&roomId=' + roomId.value.toString()
 				+ '&liveTitle=' + encodeURIComponent(roomTitle.value)
 				+ '&onlineCount=' + roomOnlineCount.value.toString()
-				+ '&heat=0',
+				+ '&heat=' + roomHeat.value.toString(),
 		})
 	}
 

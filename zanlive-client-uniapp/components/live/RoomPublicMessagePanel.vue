@@ -10,7 +10,7 @@
 					<text class="room-message-empty-text">{{ emptyText }}</text>
 				</view>
 				<view v-for="item in messageList" :id="resolveMessageAnchorId(item.id)" :key="item.id" class="room-message-bubble room-surface-chat">
-					<text class="room-message-name">{{ item.senderName }}:</text>
+					<text v-if="item.senderName.length > 0" class="room-message-name">{{ item.senderName }}:</text>
 					<text class="room-message-content">{{ item.content }}</text>
 				</view>
 				<view :id="bottomAnchorId" class="room-message-bottom-anchor" :style="'height:' + bottomSpacerHeight + 'px;'"></view>

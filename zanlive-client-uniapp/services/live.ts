@@ -240,9 +240,9 @@ function resolveSenderName(uid: number | null, messageType: string | null): stri
 		return t('room.broadcastName')
 	}
 	if (uid == null || uid <= 0) {
-		return t('common.defaultMember')
+		return ''
 	}
-	return t('common.defaultMember') + ' ' + uid.toString()
+	return uid.toString()
 }
 
 function buildAnchorCard(item: UTSJSONObject): AnchorCard {
@@ -488,22 +488,24 @@ export async function sendLiveMessage(roomId: number, content: string, clientMes
 	}
 }
 
-export async function getLiveRoomRanking(pageSize: number = 10): Promise<LiveRoomRankingItem[]> {
+export async function getLiveRoomRanking(roomId: number, pageSize: number = 10): Promise<LiveRoomRankingItem[]> {
 	try {
 		const response = await requestApi<UTSJSONObject>({
-			url: '/live/rank/list?pageNum=1&pageSize=' + pageSize.toString(),
+			url: '/live/rank/room/' + roomId.toString() + '?pageNum=1&pageSize=' + pageSize.toString(),
 			method: 'GET',
 			withAuth: true,
 			data: null,
 		})
+		console.log('[live-rank] raw response', roomId, response.data)
 		const dataObject = response.data != null ? readObjectValue(response.data, 'data') : null
 		const topLevelList = response.data != null ? readObjectArrayValue(response.data, 'list') : null
 		const nestedList = readObjectArrayValue(dataObject, 'list')
 		const list = topLevelList != null ? topLevelList : nestedList
 		if (list == null || list.length == 0) {
+			console.log('[live-rank] parsed list empty', roomId, response.data)
 			return []
 		}
-		return list.map((item, index) => ({
+		const rankingList = list.map((item, index) => ({
 			rankNo: readNumberValue(item, 'rankNo') != null ? (readNumberValue(item, 'rankNo') as number) : index + 1,
 			roomId: readNumberValue(item, 'roomId') != null ? (readNumberValue(item, 'roomId') as number) : 0,
 			anchorId: readNumberValue(item, 'anchorId') != null ? (readNumberValue(item, 'anchorId') as number) : 0,
@@ -516,7 +518,14 @@ export async function getLiveRoomRanking(pageSize: number = 10): Promise<LiveRoo
 			rewardTotalAmount: readNumberValue(item, 'rewardTotalAmount') != null ? (readNumberValue(item, 'rewardTotalAmount') as number) : 0,
 			totalAmount: readNumberValue(item, 'totalAmount') != null ? (readNumberValue(item, 'totalAmount') as number) : 0,
 		}))
+		console.log('[live-rank] parsed list', roomId, rankingList)
+		for (let i = 0; i < rankingList.length; i++) {
+			const item = rankingList[i]
+			console.log('[live-rank] avatar url', roomId, i, item.anchorId, item.anchorName, item.anchorAvatar)
+		}
+		return rankingList
 	} catch (_error) {
+		console.log('[live-rank] request failed', roomId, _error)
 		return []
 	}
 }

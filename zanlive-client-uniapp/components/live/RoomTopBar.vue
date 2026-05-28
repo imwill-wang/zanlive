@@ -15,7 +15,10 @@
 				<view class="room-ranking-avatars">
 					<image v-for="(avatar, index) in topAudienceAvatars" :key="avatar + index.toString()" class="room-ranking-avatar" :src="avatar" mode="aspectFill"></image>
 				</view>
-				<text class="room-ranking-count">{{ roomOnlineCount }}</text>
+				<view class="room-ranking-metrics">
+					<text class="room-ranking-count">{{ onlineText }} {{ roomOnlineCount }}</text>
+					<text class="room-ranking-heat">{{ heatText }} {{ roomHeat }}</text>
+				</view>
 			</view>
 			<view class="room-close-button room-surface-soft" @tap="emit('close')">
 				<text class="room-close-text">x</text>
@@ -35,6 +38,9 @@ defineProps<{
 	followLoading: boolean
 	topAudienceAvatars: string[]
 	roomOnlineCount: number
+	roomHeat: number
+	onlineText: string
+	heatText: string
 }>()
 
 const emit = defineEmits<{
@@ -172,6 +178,19 @@ const emit = defineEmits<{
 		font-size: 12px;
 		font-weight: 700;
 		color: #ffffff;
+	}
+
+	.room-ranking-metrics {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+	}
+
+	.room-ranking-heat {
+		font-size: 10px;
+		color: rgba(255, 255, 255, 0.86);
+		margin-top: 1px;
 	}
 
 	.room-close-button {

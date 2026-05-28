@@ -219,9 +219,9 @@ function resolveLiveSocketSenderName(source: UTSJSONObject | null): string {
 	}
 	const uid = readNumberValue(source, 'uid')
 	if (uid != null && uid > 0) {
-		return t('common.defaultMember') + ' ' + uid.toString()
+		return uid.toString()
 	}
-	return t('common.defaultMember')
+	return ''
 }
 
 function normalizeLiveSocketMessage(source: UTSJSONObject | null): LiveMessage | null {

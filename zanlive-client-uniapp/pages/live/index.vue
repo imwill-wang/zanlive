@@ -58,11 +58,11 @@
 							<text class="live-title">{{ item.isLiving ? item.liveTitle : item.intro }}</text>
 						</view>
 						<view class="live-card-bottom-copy">
+							<view v-if="item.isLiving" class="live-stats-row">
+								<text class="live-stats">{{ onlineText }} {{ item.onlineCount }} · {{ heatText }} {{ item.heat }}</text>
+							</view>
 							<view class="live-tags">
 								<text v-for="tag in item.tags" :key="tag" class="tag-chip live-tag-chip">{{ tag }}</text>
-							</view>
-							<view class="live-stats-row">
-								<text class="live-stats">{{ onlineText }} {{ item.onlineCount }} · {{ heatText }} {{ item.heat }}</text>
 							</view>
 						</view>
 					</view>

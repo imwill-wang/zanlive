@@ -6,7 +6,7 @@
 					<image class="user-avatar" :src="userAvatar" mode="aspectFill"></image>
 					<view class="user-profile-copy">
 						<text class="section-title">{{ userName }}</text>
-						<text class="meta-text user-id-text">{{ userIdLabel }} {{ displayUserId }}</text>
+						<text class="meta-text user-id-text" @tap="copyUserId">{{ userIdLabel }} {{ displayUserId }}</text>
 						<text class="section-subtitle">{{ userMotto }}</text>
 					</view>
 				</view>
@@ -150,6 +150,21 @@ import { ref } from 'vue'
 		})
 	}
 
+	function copyUserId(): void {
+		if (displayUserId.value == '--') {
+			return
+		}
+		uni.setClipboardData({
+			data: displayUserId.value,
+			success: () => {
+				uni.showToast({
+					title: 'ID copied',
+					icon: 'none',
+				})
+			},
+		})
+	}
+
 	onShow(() => {
 		restoreAuthState().then(() => {
 			refreshBalance().then(() => {
@@ -199,6 +214,7 @@ import { ref } from 'vue'
 	.user-id-text {
 		margin-top: 4px;
 	}
+
 
 	.user-badge-row {
 		display: flex;
